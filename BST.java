@@ -1,3 +1,5 @@
+import javax.swing.tree.TreeNode;
+
 class MyBinaryNode<T extends Comparable<T>> {
 
     T key;
@@ -35,6 +37,19 @@ class BinarySearchTree<T extends Comparable<T>> {
 
         return root;
     }
+
+    // calculate size of BST
+    int size() {
+        return sizeRec(root);
+    }
+
+    // recursive method to calculate size
+    int sizeRec(MyBinaryNode<T> root) {
+        if (root == null)
+            return 0;
+
+        return 1 + sizeRec(root.left) + sizeRec(root.right);
+    }
 }
 
 public class BST {
@@ -47,6 +62,13 @@ public class BST {
 
         bst.insert(30);
         bst.insert(70);
+
+        bst.insert(22);
+        bst.insert(40);
+        bst.insert(60);
+        bst.insert(95);
+
+        System.out.println("Size: " + bst.size());
 
     }
 }
